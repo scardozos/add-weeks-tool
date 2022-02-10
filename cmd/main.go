@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 	"os"
+	"time"
 
 	"github.com/scardozos/add-weeks-tool/cmd/dbclient"
 )
@@ -13,5 +14,6 @@ var (
 
 func main() {
 	localClient := dbclient.NewLocalClient(grpcServerAddr, false)
-	log.Print(localClient.GetStaticWeeks())
+	now := time.Now()
+	log.Printf("Got value %v in %v", localClient.GetStaticWeeks(), time.Since(now))
 }

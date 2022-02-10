@@ -5,7 +5,6 @@ import (
 	"log"
 	"time"
 
-	"github.com/scardozos/add-weeks-tool/cmd/types"
 	weeks_pb "github.com/scardozos/esplai-weeks-db/api/weeksdb"
 )
 
@@ -19,7 +18,7 @@ func NewLocalClient(host string, secure bool) *LocalClient {
 	}
 }
 
-func (s *LocalClient) GetStaticWeeks() []types.Date {
+func (s *LocalClient) GetStaticWeeks() []Date {
 	c := s.db.Client
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
@@ -28,7 +27,7 @@ func (s *LocalClient) GetStaticWeeks() []types.Date {
 		log.Print(err)
 		return nil
 	}
-	ret := make([]types.Date, len(res.StaticWeeks))
+	ret := make([]Date, len(res.StaticWeeks))
 	for idx, val := range res.StaticWeeks {
 		ret[idx] = ToTypeDate(*val)
 	}
@@ -38,8 +37,8 @@ func (s *LocalClient) GetStaticWeeks() []types.Date {
 func (s *LocalClient) SetStaticWeek()   {}
 func (s *LocalClient) UnsetStaticWeek() {}
 
-func ToTypeDate(d weeks_pb.Date) types.Date {
-	return types.Date{
+func ToTypeDate(d weeks_pb.Date) Date {
+	return Date{
 		Day:   d.Day,
 		Month: d.Month,
 		Year:  d.Year,
