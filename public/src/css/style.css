@@ -1,0 +1,51 @@
+html, body, * {
+    margin: 0;
+    padding: 0;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.wrapper {
+    display:flex;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.date-form-entry {
+    display:flex;
+    flex-direction:column;
+}
+
+.date-form-entry label {
+    margin: .4rem 0;
+}
+
+button {
+    width: 100%;
+    padding: .5em;
+    margin-bottom: .5rem;
+    margin-top: .5rem;
+}
+
+form {
+    padding: .7rem;
+    width: 20rem;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+
+.success {
+    background-color: green;
+}
+
+.failure {
+    background-color: red;
+}

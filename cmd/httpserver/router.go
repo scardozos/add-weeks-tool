@@ -5,24 +5,28 @@ import (
 	"path"
 
 	"github.com/julienschmidt/httprouter"
+	"github.com/scardozos/add-weeks-tool/cmd/dbclient"
 )
 
 type WeekHandlerRouterContext struct {
-	Rtr *httprouter.Router
+	Rtr      *httprouter.Router
+	DbClient *dbclient.LocalClient
 }
 type WeekHandlerRouter struct {
 	*WeekHandlerRouterContext
 }
 
-func InitRoutes() WeekHandlerRouter {
+func (w *WeekHandlerRouterContext) InitRoutes() {
 	router := httprouter.New()
 	var placeholder httprouter.Handle
-	router.GET("/", placeholder)
-	router.GET("/add", placeholder)
-	router.GET("/remove", placeholder)
-	router.GET("/list", placeholder)
+
+	// UI
+	router.GET("/", HtmlTemplate)
+
+	// Actual HTTP API
+	router.POST("/date", w.InsertDates)
+	router.DELETE("/date", placeholder)
+	router.GET("/date", w.GetDates)
 	router.ServeFiles("/src/*filepath", http.Dir(path.Join("public", "src")))
-	return WeekHandlerRouter{
-		&WeekHandlerRouterContext{Rtr: router},
-	}
+	w.Rtr = router
 }

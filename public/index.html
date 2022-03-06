@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="src/css/style.css">
+    <title>Dates Esplai</title>
+</head>
+<body>
+   <div class="wrapper">
+    <div class="bubble" id="response"></div>
+   <form id="form-dates">
+        <div id="select-dates">
+            <button multiple-weeks-btn id="multiple-weeks-select" class="select-date-btn">Vull afegir més d'una setmana</button>
+            <button single-weeks-btn id="single-weeks-select" class="hidden select-date-btn">Vull afegir una setmana</button>
+        </div>   
+        <div id="single-date" class="date-form-entry">
+            <label>Date</label>
+            <input type="date" name="date-in">
+        </div>
+        <div class="hidden" id="date-range">
+            <div class="date-form-entry">
+                <label>Data d'inici</label>
+                <input type="date" name="start-date">
+            </div>
+            <div class="date-form-entry">
+                <label>Data fi</label>
+                <input type="date" name="end-date">
+            </div>
+        </div>
+        <div id="submit-container">
+            <button submit-btn id="submit-btn">
+                Afegir
+            </button>
+        </div>
+   </form> 
+   </div>
+   <script src="src/js/parse_form.js"></script>
+</body>
+</html>
